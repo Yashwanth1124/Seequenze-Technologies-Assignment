@@ -1,163 +1,112 @@
-In this project, let's build a **Navbar with Context** by applying the concepts we have learned till now.
+# Task Manager Application
 
-### Refer to the image below:
+This is a task manager application built with React for the frontend and Node.js/Express for the backend. The app allows users to create, update, and delete tasks, as well as track their completion status.
 
-<br/>
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-output.gif" alt="navbar with context output" style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
+## Table of Contents
 
-### Design Files
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Project Structure](#project-structure)
+- [Design Decisions](#design-decisions)
+- [License](#license)
 
-<details>
-<summary>Click to view</summary>
+## Features
 
-- [Extra Small (Size < 576px) and Small (Size >= 576px) - Home](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-home-sm-outputs.png)
-- [Extra Small (Size < 576px) and Small (Size >= 576px) - About](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-about-sm-outputs.png)
-- [Extra Small (Size < 576px) and Small (Size >= 576px) - Not Found](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-not-found-sm-outputs.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Home Light Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-home-light-theme-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Home Dark Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-home-dark-theme-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - About Light Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-about-light-theme-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - About Dark Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-about-dark-theme-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Not Found Light Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-not-found-light-theme-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Not Found Dark Theme](https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-not-found-dark-theme-lg-output.png)
+- Create new tasks with title, description, and status.
+- Update task status (To Do, In Progress, Done).
+- Delete tasks.
+- View tasks categorized by their status.
 
-</details>
+## Technologies Used
 
-### Set Up Instructions
+- **Frontend:** React, Axios
+- **Backend:** Node.js, Express
+- **Database:** JSON file storage (tasks are stored in `tasks.json`)
 
-<details>
-<summary>Click to view</summary>
+## Setup Instructions
 
-- Download dependencies by running `npm install`
-- Start up the app using `npm start`
-</details>
+### Prerequisites
 
-### Completion Instructions
+- Node.js (v12 or later)
+- npm (Node Package Manager)
 
-<details>
-<summary>Functionality to be added</summary>
-<br/>
+### Frontend Setup
 
-The app must have the following functionalities
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Yashwanth1124/Seequenze-Technologies-Assignment.git
+   cd task-manager-frontend
+Install dependencies:
 
-- Initially, the app should consists of light theme
-- When the dark theme image is clicked in the respective route
-  - The dark theme image should be changed to light theme image
-  - The app should be changed to dark mode
-- when the light theme image is clicked in the Respective route
-  - The light theme image should be changed to dark theme image
-  - The app should be changed to light mode
-- The Theme Context has an object as a value with the following properties
-  - `isDarkTheme` - this key is used to change the theme
-  - `toggleTheme` - this method is used to update the value of the `isDarkTheme`
-- When an undefined path is provided in the URL then the page should navigate to the NotFound Route
+bash
+Copy code
+npm install
+Start the development server:
 
-</details>
+bash
+Copy code
+npm start
+The application will be running at http://localhost:3000.
 
-<details>
-<summary>Components Structure</summary>
+Backend Setup
+Navigate to the backend directory:
 
-<br/>
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-component-structure-breakdown-home.png" alt="component structure breakdown Home" style="max-width:100%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/navbar-with-context-component-structure-breakdown-about.png" alt="component structure breakdown About" style="max-width:100%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
+bash
+Copy code
+cd task-manager-backend
+Install dependencies:
 
-</details>
+bash
+Copy code
+npm install
+Start the backend server:
 
-<details>
-<summary>Implementation Files</summary>
-<br/>
+bash
+Copy code
+node server.js
+The backend will be running at http://localhost:5000.
 
-Use these files to complete the implementation:
+Initial Tasks
+When you start the backend server for the first time, the tasks are loaded from the tasks.json file. If the file is empty or does not exist, the application will initialize an empty task list.
+Project Structure
+Frontend (task-manager-frontend/src)
+bash
+Copy code
+src/
+├── components/
+│   ├── TaskCard.js      # Component to display individual task
+│   └── TaskForm.js      # Component to create new tasks
+├── App.js               # Main application component
+├── App.css              # CSS styles for the app
+└── index.js             # Entry point for the React application
+Backend (task-manager-backend)
+perl
+Copy code
+task-manager-backend/
+├── tasks.json           # JSON file to store tasks
+├── server.js            # Express server configuration
+├── package.json         # Backend dependencies
+└── package-lock.json    # Dependency lock file
+Design Decisions
+State Management: The frontend uses local state management with React hooks (useState, useEffect) to manage tasks and loading state.
+API Communication: Axios is used for making HTTP requests to the backend for fetching, creating, updating, and deleting tasks.
+File Storage: Tasks are stored in a JSON file (tasks.json) for simplicity, allowing easy access and modification. This can be replaced with a database (like MongoDB) for a production-ready application.
+Responsive Design: The application is designed to be user-friendly, with clear visual feedback when tasks are added, updated, or deleted.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- `src/App.js`
-- `src/components/Home/index.js`
-- `src/components/Home/index.css`
-- `src/components/About/index.js`
-- `src/components/About/index.css`
-- `src/components/Navbar/index.js`
-- `src/components/Navbar/index.css`
-- `src/components/NotFound/index.css`
-- `src/components/NotFound/index.js`
+vbnet
+Copy code
 
-</details>
+### Instructions for Using the README
+- Replace placeholders with relevant details if needed.
+- Adjust the technologies or features based on your actual implementation.
+- Ensure that the installation commands match your project's package manager (npm, yarn, etc.).
 
-### Important Note
+Feel free to modify or expand upon this template to better fit your project's needs!
 
-<details>
-<summary>Click to view</summary>
 
-<br/>
 
-**The following instructions are required for the tests to pass**
 
-- The **Home** image for light theme and dark theme should have the alt attribute value as `home`
-- The **About** image for light theme and dark theme should have the alt attribute value as `about`
-- The **Website Logo** image for light theme and dark theme should have the alt attribute value as `website logo`
-- The **Theme** image for light theme and dark theme should have the alt attribute value as `theme`
-- The Theme button should have the data-testid as `theme`
 
-</details>
-
-### Resources
-
-<details>
-<summary>Image URLs</summary>
-
-- [https://assets.ccbp.in/frontend/react-js/home-light-img.png](https://assets.ccbp.in/frontend/react-js/home-light-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/home-dark-img.png](https://assets.ccbp.in/frontend/react-js/home-dark-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/about-light-img.png](https://assets.ccbp.in/frontend/react-js/about-light-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/about-dark-img.png](https://assets.ccbp.in/frontend/react-js/about-dark-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/website-logo-light-theme-img.png](https://assets.ccbp.in/frontend/react-js/website-logo-light-theme-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/website-logo-dark-theme-img.png](https://assets.ccbp.in/frontend/react-js/website-logo-dark-theme-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/light-theme-img.png](https://assets.ccbp.in/frontend/react-js/light-theme-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/dark-theme-img.png](https://assets.ccbp.in/frontend/react-js/dark-theme-img.png)
-
-- [https://assets.ccbp.in/frontend/react-js/not-found-img.png](https://assets.ccbp.in/frontend/react-js/not-found-img.png) alt should be **not found**
-
-</details>
-
-<details>
-<summary>Colors</summary>
-
-<br/>
-
-<div style="background-color: #000000; width: 150px; padding: 10px; color: white">Hex: #000000</div>
-<div style="background-color: #ffffff; width: 150px; padding: 10px; color: black">Hex: #ffffff</div>
-<div style="background-color: #1e293b; width: 150px; padding: 10px; color: white">Hex: #1e293b</div>
-<div style="background-color: #333333; width: 150px; padding: 10px; color: white">Hex: #333333</div>
-<div style="background-color: #dcdcdc; width: 150px; padding: 10px; color: black">Hex: #dcdcdc</div>
-<div style="background-color: #171f46; width: 150px; padding: 10px; color: white">Hex: #171f46</div>
-<div style="background-color: #334155; width: 150px; padding: 10px; color: white">Hex: #334155</div>
-<div style="background-color: #64748b; width: 150px; padding: 10px; color: white">Hex: #64748b</div>
-<div style="background-color: #f8fafc; width: 150px; padding: 10px; color: black">Hex: #f8fafc</div>
-
-</details>
-
-<details>
-<summary>Font-families</summary>
-
-- Roboto
-
-</details>
-
-> ### _Things to Keep in Mind_
->
-> - All components you implement should go in the `src/components` directory.
-> - Don't change the component folder names as those are the files being imported into the tests.
-> - **Do not remove the pre-filled code**
-> - Want to quickly review some of the concepts you’ve been learning? Take a look at the Cheat Sheets.
